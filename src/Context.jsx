@@ -1,6 +1,10 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import axios from "axios";
 
 const AppContext = createContext();
+
+const allMealsUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s=Egg";
+const randomMealUrl = "https://www.themealdb.com/api/json/v1/1/random.php";
 
 const AppProvider = function ({ children }) {
   const state = {
@@ -11,6 +15,7 @@ const AppProvider = function ({ children }) {
   };
   const [allMeals, setAllMeals] = useState([]);
   const [randomMeal, setRandomMeal] = useState([]);
+
   // console.log(allMeals);
   // console.log(randomMeal);
 
@@ -28,12 +33,10 @@ const AppProvider = function ({ children }) {
 
   const getSearchMealByName = async function () {
     try {
-      const response = await fetch(
-        "https://www.themealdb.com/api/json/v1/1/search.php?s=Chicken"
-      );
+      const response = await fetch(allMealsUrl);
       const data = await response.json();
       const { meals } = data;
-      console.log(data);
+      // console.log(data);
       // console.log(meals);
       setAllMeals(meals);
     } catch (error) {
@@ -43,9 +46,7 @@ const AppProvider = function ({ children }) {
 
   const getRandomMeal = async function () {
     try {
-      const response = await fetch(
-        "https://www.themealdb.com/api/json/v1/1/random.php"
-      );
+      const response = await fetch(randomMealUrl);
       const data = await response.json();
       const { meals } = data;
       // console.log(data);
@@ -55,10 +56,27 @@ const AppProvider = function ({ children }) {
     }
   };
 
+  /*
+  const client = axios.create({
+    baseURL: "https://www.themealdb.com/api/json/v1/1/search.php?s=Egg",
+  });
+  */
+
+  const fetchMeals = async function (url) {
+    try {
+      const response = await axios(url);
+      const { meals } = response.data;
+      // console.log(response, meals);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
   useEffect(() => {
     // getUser();
-    getSearchMealByName();
-    getRandomMeal();
+    // getSearchMealByName();
+    // getRandomMeal();
+    fetchMeals(allMealsUrl);
   }, []);
 
   return (
