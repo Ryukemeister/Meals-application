@@ -4,7 +4,7 @@ import { useGlobalContext } from "../Context";
 function Meals() {
   const { randomMeal } = useGlobalContext();
   const displayRandomMeal = randomMeal.map((meal) => {
-    console.table(meal);
+    // console.table(meal);
     return (
       <div key={meal.idMeal}>
         <h1>
