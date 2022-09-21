@@ -3,18 +3,20 @@ import axios from "axios";
 
 const AppContext = createContext();
 
-const allMealsUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s=Egg";
+const allMealsUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s=egg";
 const randomMealUrl = "https://www.themealdb.com/api/json/v1/1/random.php";
 
 const AppProvider = function ({ children }) {
+  const [allMeals, setAllMeals] = useState([]);
+  const [randomMeal, setRandomMeal] = useState([]);
+  /*
   const state = {
     name: "Rajiv Sahal",
     age: 22,
     profession: "Frontend developer",
     passion: "soccer and music",
   };
-  const [allMeals, setAllMeals] = useState([]);
-  const [randomMeal, setRandomMeal] = useState([]);
+  */
 
   // console.log(allMeals);
   // console.log(randomMeal);
@@ -66,6 +68,7 @@ const AppProvider = function ({ children }) {
     try {
       const response = await axios(url);
       const { meals } = response.data;
+      setAllMeals(meals);
       // console.log(response, meals);
     } catch (error) {
       console.log(error.response);
@@ -80,7 +83,7 @@ const AppProvider = function ({ children }) {
   }, []);
 
   return (
-    <AppContext.Provider value={{ state, allMeals, randomMeal }}>
+    <AppContext.Provider value={{ allMeals, randomMeal }}>
       {children}
     </AppContext.Provider>
   );
