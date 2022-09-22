@@ -78,7 +78,7 @@ const AppProvider = function ({ children }) {
   useEffect(() => {
     // getUser();
     // getSearchMealByName();
-    // getRandomMeal();
+    getRandomMeal();
     fetchMeals(allMealsUrl);
   }, []);
 

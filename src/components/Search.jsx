@@ -46,20 +46,32 @@ function Search() {
     return (
       <article
         key={id}
-        className="border-[1.5px] w-[200px] border-red-500 my-5 rounded-sm shadow-md hover:shadow-xl"
+        className="border-[1.5px] w-[500px] border-red-500 my-5 rounded-sm shadow-md hover:shadow-2xl"
       >
         <img
-          className="w-[200px] h-32 bg-center bg-cover rounded-sm"
+          className="w-[500px] h-48 object-center object-cover"
           src={image}
           alt="Meal image"
         />
-        <footer>
-          <h1 className="font-mono font-medium tracking-tight text-left leading-[17px] pl-2 py-3">
+        <footer className="flex justify-between">
+          <h1 className="font-mono font-medium tracking-tight text-left text-xl leading-[25px] pl-2 py-3">
             {title}
             {/*<br /> <span className="font-bold text-red-500">{category}</span>*/}
           </h1>
-          <button className="bg-green-500 text-white rounded-sm px-2 py-1 font-semibold mx-2 mb-4 drop-shadow-md hover:bg-green-600">
-            Click me
+          <button className="bg-transparent text-black text-2xl px-3 py-1">
+            <svg
+              stroke="currentColor"
+              fill="none"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              height="1em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+            </svg>
           </button>
         </footer>
       </article>
@@ -68,8 +80,9 @@ function Search() {
 
   return (
     <div>
-      {/*<h1>Search component number {context.age}</h1>*/}
-      <h1>!-------------------!</h1>
+      <h1 className="font-semibold font-mono text-xl text-pink-500 mx-7 mt-3">
+        Search component
+      </h1>
       <section className="all-meals flex flex-wrap gap-8 mx-7">
         {displayMeals}
       </section>
