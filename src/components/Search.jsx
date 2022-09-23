@@ -2,8 +2,18 @@ import React from "react";
 import { useGlobalContext } from "../Context";
 
 function Search() {
-  const { allMeals } = useGlobalContext();
+  const { allMeals, loading, favouriteMeals, setFavouriteMeals } =
+    useGlobalContext();
   // console.log(allMeals);
+  // console.log(loading);
+  function addFavouriteMeal(e) {
+    const currentItem = e.target.parentNode.parentNode.children[0].innerHTML;
+
+    setFavouriteMeals((prevFavouriteMeals) => {
+      return [...prevFavouriteMeals, currentItem];
+    });
+    console.log(favouriteMeals);
+  }
 
   const displayMeals = allMeals.map((meal) => {
     // console.table(meal);
@@ -58,14 +68,20 @@ function Search() {
             {title}
             {/*<br /> <span className="font-bold text-red-500">{category}</span>*/}
           </h1>
-          <button className="bg-transparent text-black text-2xl px-3 py-1">
+          <button
+            className="bg-transparent text-black text-2xl px-3 py-1"
+            onClick={addFavouriteMeal}
+          >
             <svg
               stroke="currentColor"
               fill="none"
-              stroke-width="2"
               viewBox="0 0 24 24"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              // stroke-width="2"
+              // stroke-linecap="round"
+              // stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               height="1em"
               width="1em"
               xmlns="http://www.w3.org/2000/svg"
@@ -83,8 +99,11 @@ function Search() {
       <h1 className="font-semibold font-mono text-xl text-pink-500 mx-7 mt-3">
         Search component
       </h1>
+      {loading && (
+        <h1 className="font-semibold font-mono text-xl mx-7">Loading...</h1>
+      )}
       <section className="all-meals flex flex-wrap gap-8 mx-7">
-        {displayMeals}
+        {/*displayMeals*/}
       </section>
     </div>
   );
