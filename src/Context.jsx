@@ -3,7 +3,8 @@ import axios from "axios";
 
 const AppContext = createContext();
 
-const allMealsUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s=egg";
+const allMealsUrl =
+  "https://www.themealdb.com/api/json/v1/1/search.php?s=vegan";
 const randomMealUrl = "https://www.themealdb.com/api/json/v1/1/random.php";
 
 const AppProvider = function ({ children }) {
@@ -11,6 +12,7 @@ const AppProvider = function ({ children }) {
   const [randomMeal, setRandomMeal] = useState([]);
   const [loading, setLoading] = useState(false);
   const [favouriteMeals, setFavouriteMeals] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
   /*
   const state = {
     name: "Rajiv Sahal",
@@ -73,7 +75,8 @@ const AppProvider = function ({ children }) {
     try {
       const response = await axios(url);
       const { meals } = response.data;
-      setAllMeals(meals);
+      meals ? setAllMeals(meals) : setAllMeals([]);
+      //  setAllMeals(meals);
       // console.log(response, meals);
     } catch (error) {
       console.log(error.response);
@@ -96,6 +99,8 @@ const AppProvider = function ({ children }) {
         loading,
         favouriteMeals,
         setFavouriteMeals,
+        searchQuery,
+        setSearchQuery,
       }}
     >
       {children}
