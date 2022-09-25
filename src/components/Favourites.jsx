@@ -35,7 +35,7 @@ function Favourites() {
           alt="Meal image"
         />
         <footer className="flex justify-between">
-          <h1 className="font-mono font-medium tracking-tight text-left text-xl leading-[25px] pl-2 py-3">
+          <h1 className="font-mono font-medium tracking-tight text-left text-xl leading-[25px] pl-3 py-3">
             {title}
             {/*<br /> <span className="font-bold text-red-500">{category}</span>*/}
           </h1>
