@@ -3,8 +3,7 @@ import axios from "axios";
 
 const AppContext = createContext();
 
-const allMealsUrl =
-  "https://www.themealdb.com/api/json/v1/1/search.php?s=vegan";
+const allMealsUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
 const randomMealUrl = "https://www.themealdb.com/api/json/v1/1/random.php";
 
 const AppProvider = function ({ children }) {
@@ -13,14 +12,6 @@ const AppProvider = function ({ children }) {
   const [loading, setLoading] = useState(false);
   const [favouriteMeals, setFavouriteMeals] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  /*
-  const state = {
-    name: "Rajiv Sahal",
-    age: 22,
-    profession: "Frontend developer",
-    passion: "soccer and music",
-  };
-  */
 
   // console.log(allMeals);
   // console.log(randomMeal);
@@ -87,7 +78,7 @@ const AppProvider = function ({ children }) {
   useEffect(() => {
     // getUser();
     // getSearchMealByName();
-    getRandomMeal();
+    // getRandomMeal();
     fetchMeals(allMealsUrl);
   }, []);
 
@@ -101,6 +92,8 @@ const AppProvider = function ({ children }) {
         setFavouriteMeals,
         searchQuery,
         setSearchQuery,
+        fetchMeals,
+        getRandomMeal,
       }}
     >
       {children}
