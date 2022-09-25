@@ -1,40 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 import { useGlobalContext } from "../Context";
 
 function Search() {
-  const { searchQuery, setSearchQuery } = useGlobalContext();
+  const { searchQuery, setSearchQuery, fetchMeals, getRandomMeal } =
+    useGlobalContext();
+  const [inputText, setInputText] = useState("");
 
-  function getSearchItem(e) {
-    setSearchQuery(e.target.value);
+  function handleChange(e) {
+    setInputText(e.target.value);
     // console.log(e.target.value);
   }
 
-  // console.log(searchQuery);
-
-  function getItem(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    console.log(searchQuery);
-    setSearchQuery("");
+    // console.log(searchQuery);
+    // setSearchQuery("");
+    // console.log(inputText);
+    setInputText("");
+    fetchMeals(
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${inputText}`
+    );
+  }
+
+  function getRandomDish(e) {
+    // console.log("Working");
+    getRandomMeal();
   }
 
   return (
-    <section>
-      <form className=" mt-5 mx-5 flex">
+    <header className="flex justify-center">
+      <form className="mt-5 ml-5 mr-3 flex flex-wrap" onSubmit={handleSubmit}>
         <input
           type="text"
-          onChange={getSearchItem}
-          value={searchQuery}
+          onChange={handleChange}
+          value={inputText}
           placeholder="Search your dish here..."
-          className="border-black border-[1.5px] rounded-full px-4 w-[250px] py-1 mx-1 mt-0 outline-none"
+          className="border-black border-[1.5px] rounded-full px-4 max-w-[200px] shadow-sm py-1 mx-3 mt-0 outline-none"
         />
         <button
-          className="bg-green-400 text-white font-medium px-4 rounded-full shadow-md hover:bg-green-500"
-          onClick={getItem}
+          type="submit"
+          className="bg-green-400 text-white mr-3 font-medium px-4 rounded-full shadow-md hover:bg-green-500"
+          // onClick={handleClick}
         >
           Search
         </button>
+        <button
+          type="button"
+          onClick={getRandomDish}
+          className="bg-yellow-400 text-white font-medium px-4 rounded-full shadow-md hover:bg-yellow-500"
+        >
+          Surpise me
+        </button>
       </form>
-    </section>
+    </header>
   );
 }
 
