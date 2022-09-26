@@ -2,10 +2,29 @@ import React from "react";
 import { useGlobalContext } from "../Context";
 
 function Meals() {
-  const { allMeals, loading, favouriteMeals, setFavouriteMeals } =
+  const { allMeals, loading, favouriteMeals, setFavouriteMeals, setShowModal } =
     useGlobalContext();
   // console.log(allMeals.length);
   // console.log(loading);
+
+  function showModalOnScreen(e) {
+    /*console.log(
+      e.target.parentNode,
+      e.target.parentNode.children[0].src,
+      e.target.parentNode.children[1].children[0].innerHTML
+    );
+    */
+
+    const modalMeal = allMeals.filter((meal) => {
+      return meal.strMeal ===
+        e.target.parentNode.children[1].children[0].innerHTML
+        ? meal
+        : "";
+    });
+    console.log(modalMeal[0]);
+    setShowModal(true);
+  }
+
   function addFavouriteMeal(e) {
     const currentItem = e.target.parentNode.parentNode.children[0].innerHTML;
 
@@ -18,7 +37,7 @@ function Meals() {
   if (loading) {
     return (
       <section>
-        <h1 className="font-semibold font-mono justify-center text-xl mx-7 mt-5 mb-3">
+        <h1 className="font-semibold font-mono justify-center text-xl mx-16 mt-5 mb-3">
           Loading...
         </h1>
       </section>
@@ -28,7 +47,7 @@ function Meals() {
   if (allMeals.length < 1) {
     return (
       <section>
-        <h1 className="font-semibold font-mono text-xl mx-7 mt-5 mb-3 text-green-500">
+        <h1 className="font-semibold font-mono text-xl mx-16 mt-6 mb-3 text-green-500">
           Sorry, we couldn't find the specific meal that you were looking for.
           Please try again.
         </h1>
@@ -37,7 +56,7 @@ function Meals() {
   }
 
   return (
-    <section className="flex gap-7 flex-wrap justify-center mt-7">
+    <section className="flex gap-7 flex-wrap justify-start mx-16 mt-7">
       {allMeals.map((meal) => {
         // console.table(meal);
         // console.log(meal.strIngredient1, typeof meal.strIngredient1);
@@ -80,10 +99,11 @@ if (key.startsWith("strMeasure")) {
         return (
           <article
             key={id}
-            className="border-[1.5px] w-[500px] border-red-500 my-5 rounded-sm shadow-md hover:shadow-2xl"
+            onClick={showModalOnScreen}
+            className="shadow-lg cursor-pointer w-[350px] my-5 rounded-md hover:shadow-2xl transition-[0.3s ease-in-out all]"
           >
             <img
-              className="w-[500px] h-48 object-center object-cover"
+              className="w-[350px] h-[240px] rounded-t-md object-center object-cover"
               src={image}
               alt="Meal image"
             />
@@ -120,16 +140,6 @@ if (key.startsWith("strMeasure")) {
   );
 
   /*
-return (
-<section>
-  <div className="flex gap-7 flex-wrap justify-center mt-7">
-    {displayMeals}
-  </div>
-</section>
-);
-
-
-
 return (
 <section>
   <h1 className="font-mono font-semibold text-xl text-blue-500 mx-7 my-3">
