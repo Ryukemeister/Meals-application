@@ -11,55 +11,12 @@ const AppProvider = function ({ children }) {
   const [randomMeal, setRandomMeal] = useState([]);
   const [loading, setLoading] = useState(false);
   const [favouriteMeals, setFavouriteMeals] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
-
-  // console.log(allMeals);
-  // console.log(randomMeal);
-
-  const getUser = async function () {
-    try {
-      const response = await fetch("https://randomuser.me/api/");
-      const data = await response.json();
-      const { results, info } = data;
-      const [{ gender, name, email, login }] = results;
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getSearchMealByName = async function () {
-    try {
-      const response = await fetch(allMealsUrl);
-      const data = await response.json();
-      const { meals } = data;
-      // console.log(data);
-      // console.log(meals);
-      setAllMeals(meals);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getRandomMeal = async function () {
-    setLoading(true);
-    try {
-      const response = await fetch(randomMealUrl);
-      const data = await response.json();
-      const { meals } = data;
-      // console.log(data);
-      setRandomMeal(meals);
-    } catch (error) {
-      console.log(error);
-    }
-    setLoading(false);
-  };
-
-  /*
-  const client = axios.create({
-    baseURL: "https://www.themealdb.com/api/json/v1/1/search.php?s=Egg",
+  const [searchTerm, setSearchTerm] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [modalsMeal, setModalsMeal] = useState({
+    img: "https://www.themealdb.com/images/media/meals/tkxquw1628771028.jpg",
+    name: "Burek",
   });
-  */
 
   const fetchMeals = async function (url) {
     setLoading(true);
@@ -75,12 +32,21 @@ const AppProvider = function ({ children }) {
     setLoading(false);
   };
 
+  const fetchRandomMeal = function () {
+    fetchMeals(randomMealUrl);
+  };
+
+  // This useEffect only renders one time i.e. when the application loads
   useEffect(() => {
-    // getUser();
-    // getSearchMealByName();
-    // getRandomMeal();
     fetchMeals(allMealsUrl);
   }, []);
+
+  // This useEffect is for all other renders i.e. based on the change in value of our searchTerm
+  // If we would not have done this, we would be invoking two different api calls after every search
+  useEffect(() => {
+    if (!searchTerm) return;
+    fetchMeals(`${allMealsUrl}${searchTerm}`);
+  }, [searchTerm]);
 
   return (
     <AppContext.Provider
@@ -90,10 +56,10 @@ const AppProvider = function ({ children }) {
         loading,
         favouriteMeals,
         setFavouriteMeals,
-        searchQuery,
-        setSearchQuery,
-        fetchMeals,
-        getRandomMeal,
+        setSearchTerm,
+        fetchRandomMeal,
+        showModal,
+        setShowModal,
       }}
     >
       {children}
