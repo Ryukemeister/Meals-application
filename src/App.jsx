@@ -7,13 +7,13 @@ import { useGlobalContext } from "./Context";
 import "./App.css";
 
 function App() {
-  const { showModal } = useGlobalContext();
-
+  const { showModal, favouriteMeals, setFavouriteMeals } = useGlobalContext();
+  console.log(favouriteMeals);
   return (
     <div className="App">
       <Search />
+      {favouriteMeals.length > 0 && <Favourites />}
       <Meals />
-      {/* <Favourites />*/}
       {showModal && <Modal />}
     </div>
   );
