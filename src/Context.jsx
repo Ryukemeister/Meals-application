@@ -13,6 +13,7 @@ const AppProvider = function ({ children }) {
   const [favouriteMeals, setFavouriteMeals] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [selectedMeal, setSelectedMeal] = useState(null);
   const [modalsMeal, setModalsMeal] = useState({
     img: "https://www.themealdb.com/images/media/meals/tkxquw1628771028.jpg",
     name: "Burek",
@@ -34,6 +35,20 @@ const AppProvider = function ({ children }) {
 
   const fetchRandomMeal = function () {
     fetchMeals(randomMealUrl);
+  };
+
+  const selectMeal = function (idMeal, isFavourite) {
+    let meal;
+
+    meal = allMeals.find((meal) => meal.idMeal === idMeal);
+
+    setShowModal(true);
+    setSelectedMeal(meal);
+    // console.log(meal, idMeal);
+  };
+
+  const closeModal = function () {
+    setShowModal(false);
   };
 
   // This useEffect only renders one time i.e. when the application loads
@@ -58,8 +73,10 @@ const AppProvider = function ({ children }) {
         setFavouriteMeals,
         setSearchTerm,
         fetchRandomMeal,
+        selectMeal,
+        selectedMeal,
         showModal,
-        setShowModal,
+        closeModal,
       }}
     >
       {children}
