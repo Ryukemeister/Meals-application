@@ -2,37 +2,33 @@ import React from "react";
 import { useGlobalContext } from "../Context";
 
 function Meals() {
-  const { allMeals, loading, favouriteMeals, setFavouriteMeals, setShowModal } =
-    useGlobalContext();
+  const {
+    allMeals,
+    loading,
+    favouriteMeals,
+    selectMeal,
+    setFavouriteMeals,
+    setShowModal,
+  } = useGlobalContext();
   // console.log(allMeals.length);
   // console.log(loading);
 
-  function showModalOnScreen(e) {
-    /*console.log(
-      e.target.parentNode,
-      e.target.parentNode.children[0].src,
-      e.target.parentNode.children[1].children[0].innerHTML
-    );
-    */
-
+  function addFavouriteMeal(e) {
     const modalMeal = allMeals.filter((meal) => {
       return meal.strMeal ===
-        e.target.parentNode.children[1].children[0].innerHTML
+        e.target.parentNode.parentNode.children[0].innerHTML
         ? meal
         : "";
     });
-    console.log(modalMeal[0]);
-    setShowModal(true);
-  }
+    // console.log(modalMeal[0]);
+    setFavouriteMeals((prevFavouriteMeals) => [
+      ...prevFavouriteMeals,
+      modalMeal[0],
+    ]);
 
-  function addFavouriteMeal(e) {
-    const currentItem = e.target.parentNode.parentNode.children[0].innerHTML;
-
-    setFavouriteMeals((prevFavouriteMeals) => {
-      return [...prevFavouriteMeals, currentItem];
-    });
-    console.log(favouriteMeals);
+    // console.log(modalMeal[0]);
   }
+  console.log(favouriteMeals);
 
   if (loading) {
     return (
@@ -99,10 +95,10 @@ if (key.startsWith("strMeasure")) {
         return (
           <article
             key={id}
-            onClick={showModalOnScreen}
             className="shadow-lg cursor-pointer w-[350px] my-5 rounded-md hover:shadow-2xl transition-[0.3s ease-in-out all]"
           >
             <img
+              onClick={() => selectMeal(id)}
               className="w-[350px] h-[240px] rounded-t-md object-center object-cover"
               src={image}
               alt="Meal image"
