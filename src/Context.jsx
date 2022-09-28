@@ -14,10 +14,41 @@ const AppProvider = function ({ children }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [selectedMeal, setSelectedMeal] = useState(null);
-  const [modalsMeal, setModalsMeal] = useState({
-    img: "https://www.themealdb.com/images/media/meals/tkxquw1628771028.jpg",
-    name: "Burek",
-  });
+  const allMealCategories = [
+    "American",
+    "British",
+    "Canadian",
+    "Chinese",
+    "Croatian",
+    "Dutch",
+    "Egyptian",
+    "French",
+    "Greek",
+    "Indian",
+    "Irish",
+    "Italian",
+    "Jamaican",
+    "Japanese",
+    "Kenyan",
+    "Malaysian",
+    "Mexican",
+    "Moroccan",
+    "Polish",
+    "Portuguese",
+    "Russian",
+    "Spanish",
+    "Thai",
+    "Tunisian",
+    "Turkish",
+    "Vietnamese",
+  ];
+
+  const getMealByArea = function (area) {
+    const meals = allMeals.filter((meal) => meal.strArea === area);
+    console.log(meals);
+  };
+
+  getMealByArea("Mexican");
 
   const fetchMeals = async function (url) {
     setLoading(true);
