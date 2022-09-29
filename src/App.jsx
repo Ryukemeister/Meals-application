@@ -7,8 +7,8 @@ import { useGlobalContext } from "./Context";
 import "./App.css";
 
 function App() {
-  const { showModal, favouriteMeals, setFavouriteMeals } = useGlobalContext();
-  console.log(favouriteMeals);
+  const { showModal, favouriteMeals } = useGlobalContext();
+
   return (
     <div className="App">
       <Search />
