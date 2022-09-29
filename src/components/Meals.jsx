@@ -9,6 +9,7 @@ function Meals() {
     selectMeal,
     setFavouriteMeals,
     setShowModal,
+    selectFavouriteMeal,
   } = useGlobalContext();
   // console.log(allMeals.length);
   // console.log(loading);
@@ -28,7 +29,6 @@ function Meals() {
 
     // console.log(modalMeal[0]);
   }
-  console.log(favouriteMeals);
 
   if (loading) {
     return (
@@ -52,7 +52,7 @@ function Meals() {
   }
 
   return (
-    <section className="flex gap-7 flex-wrap justify-start mx-16 mt-7">
+    <section className="flex gap-7 flex-wrap justify-start mx-16 mt-24">
       {allMeals.map((meal) => {
         // console.table(meal);
         // console.log(meal.strIngredient1, typeof meal.strIngredient1);
@@ -95,11 +95,11 @@ if (key.startsWith("strMeasure")) {
         return (
           <article
             key={id}
-            className="shadow-lg cursor-pointer w-[350px] my-5 rounded-md hover:shadow-2xl transition-[0.3s ease-in-out all]"
+            className="shadow-lg w-[350px] my-5 rounded-md hover:shadow-2xl transition-[0.3s ease-in-out all]"
           >
             <img
               onClick={() => selectMeal(id)}
-              className="w-[350px] h-[240px] rounded-t-md object-center object-cover"
+              className="w-[350px] cursor-pointer h-[240px] rounded-t-md object-center object-cover"
               src={image}
               alt="Meal image"
             />
@@ -108,8 +108,8 @@ if (key.startsWith("strMeasure")) {
                 {title}
               </h1>
               <button
-                className="bg-transparent text-black text-2xl px-3 py-1"
-                onClick={addFavouriteMeal}
+                className="text-black text-2xl px-1 mr-2"
+                onClick={() => selectFavouriteMeal(id)}
               >
                 <svg
                   stroke="currentColor"
