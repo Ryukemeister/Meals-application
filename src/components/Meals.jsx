@@ -52,7 +52,7 @@ function Meals() {
   }
 
   return (
-    <section className="flex gap-7 lg:gap-7 flex-wrap justify-start ml-6 lg:mx-16 my-5 lg:mt-24">
+    <section className="flex gap-7 lg:gap-7 flex-wrap justify-start ml-4 lg:mx-16 my-5 lg:mt-24">
       {allMeals.map((meal) => {
         // console.table(meal);
         // console.log(meal.strIngredient1, typeof meal.strIngredient1);
