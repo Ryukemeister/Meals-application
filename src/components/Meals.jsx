@@ -52,7 +52,7 @@ function Meals() {
   }
 
   return (
-    <section className="flex gap-7 flex-wrap justify-start mx-16 mt-5 lg:mt-24">
+    <section className="flex gap-7 lg:gap-7 flex-wrap justify-start ml-6 lg:mx-16 my-5 lg:mt-24">
       {allMeals.map((meal) => {
         // console.table(meal);
         // console.log(meal.strIngredient1, typeof meal.strIngredient1);
@@ -95,20 +95,20 @@ if (key.startsWith("strMeasure")) {
         return (
           <article
             key={id}
-            className="shadow-lg w-[350px] rounded-md hover:shadow-2xl transition-[0.3s ease-in-out all]"
+            className="shadow-lg w-[150px] lg:w-[350px] rounded-md hover:shadow-2xl transition-[0.3s ease-in-out all]"
           >
             <img
               onClick={() => selectMeal(id)}
-              className="w-[350px] cursor-pointer h-[240px] rounded-t-md object-center object-cover"
+              className="w-[150px] lg:w-[350px] cursor-pointer h-[150px] lg:h-[240px] rounded-t-md object-center object-cover"
               src={image}
               alt="Meal image"
             />
             <footer className="flex justify-between">
-              <h1 className="font-mono font-medium tracking-tight text-left text-xl leading-[25px] pl-3 py-3">
+              <h1 className="font-mono font-medium tracking-tight text-left lg:text-xl leading-[25px] pl-3 py-2 lg:py-3">
                 {title}
               </h1>
               <button
-                className="text-black text-2xl px-1 mr-2"
+                className="text-black lg:text-2xl px-1 mr-1 lg:mr-2"
                 onClick={() => selectFavouriteMeal(id)}
               >
                 <svg
