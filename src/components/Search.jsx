@@ -35,7 +35,7 @@ function Search() {
   */
 
   return (
-    <header className="flex flex-col py-3 lg:py-0 lg:flex-row justify-between w-[100%] shadow-md fixed top-0 left-0 bg-white">
+    <header className="flex flex-col py-3 lg:py-0 lg:flex-row justify-between w-[100%] shadow-md lg:fixed lg:top-0 lg:left-0 bg-white">
       <div className="ml-4 pb-1 lg:py-5 lg:ml-16 lg:mr-3">
         <h1 className="font-bold text-xl lg:text-2xl">Zwiggy</h1>
       </div>
@@ -49,7 +49,7 @@ function Search() {
             onChange={handleChange}
             value={inputText}
             placeholder="Search your dish here..."
-            className="border-black w-[190px] ml-4 mr-2 lg:ml-0 border-[1.5px] rounded-full lg:px-4 lg:w-[350px] max-w-[350px] shadow-sm py-[1px] pl-[13px] pr-[2px] lg:mx-3 lg:mt-0 lg:py-1 outline-none"
+            className="border-black w-[180px] ml-4 mr-2 lg:ml-0 border-[1.5px] rounded-full lg:px-4 lg:w-[350px] max-w-[350px] shadow-sm py-[1px] pl-[13px] pr-[2px] lg:mx-3 lg:mt-0 lg:py-1 outline-none"
           />
           <div className="flex justify-center">
             <button
