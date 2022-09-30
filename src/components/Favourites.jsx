@@ -32,8 +32,8 @@ function Favourites() {
   });
 
   return (
-    <section className="flex flex-col flex-wrap py-8 bg-black">
-      <h1 className="font-semibold px-16 text-3xl mb-5 text-white">
+    <section className="flex flex-col flex-wrap py-8 mt-14 bg-black">
+      <h1 className="font-semibold px-16 text-3xl mb-3 text-white">
         Favourites
       </h1>
       <div className="flex flex-wrap px-16 gap-x-10 gap-y-5 mb-2">
