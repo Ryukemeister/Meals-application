@@ -35,13 +35,13 @@ function Search() {
   */
 
   return (
-    <header className="flex justify-between w-[100%] shadow-md fixed top-0 left-0 bg-white">
-      <div className="my-5 ml-16 mr-3">
-        <h1 className="font-bold text-2xl">Zwiggy</h1>
+    <header className="flex flex-col py-3 lg:py-0 lg:flex-row justify-between w-[100%] shadow-md fixed top-0 left-0 bg-white">
+      <div className="ml-4 pb-1 lg:py-5 lg:ml-16 lg:mr-3">
+        <h1 className="font-bold text-xl lg:text-2xl">Zwiggy</h1>
       </div>
-      <div className="">
+      <div className="flex">
         <form
-          className="my-5 ml-12 mr-20 flex flex-wrap"
+          className="flex lg:flex-row flex-wrap lg:my-5 lg:ml-12 lg:mr-20"
           onSubmit={handleSubmit}
         >
           <input
@@ -49,22 +49,23 @@ function Search() {
             onChange={handleChange}
             value={inputText}
             placeholder="Search your dish here..."
-            className="border-black border-[1.5px] rounded-full px-4 w-[350px] max-w-[350px] shadow-sm py-1 mx-3 mt-0 outline-none"
+            className="border-black w-[190px] ml-4 mr-2 lg:ml-0 border-[1.5px] rounded-full lg:px-4 lg:w-[350px] max-w-[350px] shadow-sm py-[1px] pl-[13px] pr-[2px] lg:mx-3 lg:mt-0 lg:py-1 outline-none"
           />
-          <button
-            type="submit"
-            className="bg-green-400 text-white mr-3 font-medium px-4 rounded-full shadow-md hover:bg-green-500 transition-[0.3s ease-in-out all]"
-            // onClick={handleClick}
-          >
-            Search
-          </button>
-          <button
-            type="button"
-            onClick={getRandomDish}
-            className="bg-yellow-400 text-white font-medium px-4 rounded-full shadow-md hover:bg-yellow-500 transition-[0.3s ease-in-out all] mr-3"
-          >
-            Surpise me
-          </button>
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="bg-green-400 text-sm lg:text-base text-white mr-2 lg:mr-3 font-medium px-2 py-[1.5px] lg:px-4 rounded-full shadow-md hover:bg-green-500 transition-[0.3s ease-in-out all]"
+            >
+              Search
+            </button>
+            <button
+              type="button"
+              onClick={getRandomDish}
+              className="bg-yellow-400 text-sm lg:text-base text-white font-medium px-2 lg:px-4 rounded-full shadow-md hover:bg-yellow-500 transition-[0.3s ease-in-out all] lg:mr-3"
+            >
+              Surpise me
+            </button>
+          </div>
         </form>
       </div>
     </header>

@@ -43,7 +43,7 @@ function Meals() {
   if (allMeals.length < 1) {
     return (
       <section>
-        <h1 className="font-semibold font-mono text-xl mx-16 mt-6 mb-3 text-green-500">
+        <h1 className="font-semibold font-mono mt-24 ml-4 text-xl lg:mx-16 lg:mb-3 text-green-500">
           Sorry, we couldn't find the specific meal that you were looking for.
           Please try again.
         </h1>
@@ -95,7 +95,7 @@ if (key.startsWith("strMeasure")) {
         return (
           <article
             key={id}
-            className="shadow-lg w-[350px] my-5 rounded-md hover:shadow-2xl transition-[0.3s ease-in-out all]"
+            className="shadow-lg w-[350px] rounded-md hover:shadow-2xl transition-[0.3s ease-in-out all]"
           >
             <img
               onClick={() => selectMeal(id)}
