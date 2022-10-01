@@ -36,7 +36,7 @@ function Search() {
 
   return (
     <header className="flex flex-col py-3 lg:py-0 lg:flex-row justify-between w-[100%] shadow-md lg:fixed lg:top-0 lg:left-0 bg-white">
-      <div className="ml-4 pb-1 lg:py-5 lg:ml-16 lg:mr-3">
+      <div className="ml-4 sm:ml-6 pb-1 lg:py-5 lg:ml-16 lg:mr-3">
         <h1 className="font-bold text-xl lg:text-2xl">Zwiggy</h1>
       </div>
       <div className="flex">
@@ -48,13 +48,13 @@ function Search() {
             type="text"
             onChange={handleChange}
             value={inputText}
-            placeholder="Search your dish here..."
-            className="border-black w-[175px] ml-3 mr-1 lg:ml-0 border-[1.5px] rounded-full lg:px-4 lg:w-[350px] max-w-[350px] shadow-sm py-[1px] pl-[13px] pr-[2px] lg:mx-3 lg:mt-0 lg:py-1 outline-none"
+            placeholder="Search dish here..."
+            className="border-black w-[175px] ml-3 sm:ml-5 sm:mr-2 mr-1 lg:ml-0 border-[1.5px] rounded-full lg:px-4 lg:w-[350px] max-w-[350px] shadow-sm py-[1px] pl-[13px] pr-[2px] lg:mx-3 lg:mt-0 lg:py-1 outline-none"
           />
           <div className="flex justify-center">
             <button
               type="submit"
-              className="bg-green-400 text-sm lg:text-base text-white mr-2 lg:mr-3 font-medium px-2 py-[1.5px] lg:px-4 rounded-full shadow-md hover:bg-green-500 transition-[0.3s ease-in-out all]"
+              className="bg-green-400 text-sm lg:text-base text-white mr-2 lg:mr-3 font-medium px-[11px] py-[2.5px] sm:py-1 sm:px-3 lg:px-4 rounded-full shadow-md hover:bg-green-500 transition-[0.3s ease-in-out all]"
             >
               Search
             </button>

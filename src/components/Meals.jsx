@@ -43,7 +43,7 @@ function Meals() {
   if (allMeals.length < 1) {
     return (
       <section>
-        <h1 className="font-semibold font-mono mt-4 ml-4 text-xl lg:mx-16 lg:mb-3 text-green-500">
+        <h1 className="font-semibold font-mono mt-4 ml-4 sm:ml-6 sm:mr-3 text-xl lg:mx-16 lg:mb-3 text-green-500">
           Sorry, we couldn't find the specific meal that you were looking for.
           Please try again.
         </h1>
@@ -52,7 +52,7 @@ function Meals() {
   }
 
   return (
-    <section className="flex gap-7 lg:gap-7 flex-wrap justify-start ml-4 lg:mx-16 my-5 lg:mt-24">
+    <section className="flex gap-7 lg:gap-7 flex-wrap justify-start ml-4 sm:ml-6 lg:mx-16 my-5 lg:mt-24">
       {allMeals.map((meal) => {
         // console.table(meal);
         // console.log(meal.strIngredient1, typeof meal.strIngredient1);
