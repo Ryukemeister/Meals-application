@@ -35,7 +35,7 @@ function Search() {
   */
 
   return (
-    <header className="flex flex-col py-3 lg:py-0 lg:flex-row justify-between w-[100%] shadow-md lg:fixed lg:top-0 lg:left-0 bg-white">
+    <header className="flex flex-col md:flex-row py-3 lg:py-0 lg:flex-row justify-between w-[100%] shadow-md lg:fixed lg:top-0 lg:left-0 bg-white">
       <div className="ml-4 sm:ml-6 pb-1 lg:py-5 lg:ml-16 lg:mr-3">
         <h1 className="font-bold text-xl lg:text-2xl">Zwiggy</h1>
       </div>
@@ -61,7 +61,7 @@ function Search() {
             <button
               type="button"
               onClick={getRandomDish}
-              className="bg-yellow-400 text-sm lg:text-base text-white font-medium px-2 lg:px-4 rounded-full shadow-md hover:bg-yellow-500 transition-[0.3s ease-in-out all] lg:mr-3"
+              className="bg-yellow-400 text-sm lg:text-base text-white font-medium px-2 lg:px-4 rounded-full shadow-md hover:bg-yellow-500 transition-[0.3s ease-in-out all] lg:mr-3 md:mr-5"
             >
               Surpise me
             </button>
