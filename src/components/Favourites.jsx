@@ -17,7 +17,7 @@ function Favourites() {
       <div className="flex flex-col items-center w-24" key={id}>
         <img
           src={image}
-          className="h-24 rounded-full cursor-pointer mb-1 border-2 border-red-500"
+          className="h-16 lg:h-24 rounded-full cursor-pointer mb-1 border-2 border-red-500"
           onClick={() => selectMeal(id, true)}
           alt="Meal image"
         />
@@ -32,11 +32,11 @@ function Favourites() {
   });
 
   return (
-    <section className="flex flex-col flex-wrap py-8 mt-14 bg-black">
-      <h1 className="font-semibold px-16 text-3xl mb-3 text-white">
+    <section className="flex flex-col flex-wrap py-3 lg:py-8 bg-black">
+      <h1 className="font-semibold px-6 sm:px-8 lg:pt-14 lg:px-16 text-xl lg:text-3xl mb-3 text-white">
         Favourites
       </h1>
-      <div className="flex flex-wrap px-16 gap-x-10 gap-y-5 mb-2">
+      <div className="flex flex-wrap px-3 gap-x-2 sm:px-4 lg:px-16 sm:gap-x-3 lg:gap-x-10 lg:gap-y-5 mb-2">
         {allFaveMeals}
       </div>
     </section>
